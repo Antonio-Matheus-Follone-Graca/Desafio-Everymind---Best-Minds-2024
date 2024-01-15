@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} Cadastrar produto {% endblock %}
+{% block content %}
+    <h2> Cadastrar produto </h2>
+    <form action="{% url 'criar_produto' %}" method="POST">
+        {% csrf_token %}
+        {% for campos in form %}
+            {{ campos.label }}
+            {{campos}}
+
+            {% if campos.errors %}
+            <div class="form-group">
+                <small class="text-danger">{{ campos.errors|join:", " }}</small>
+            </div>
+               
+            {% endif %}
+        {% endfor %}
+        
+        <button href="#" class="mt-2 btn btn-primary"> Cadastrar produto </button>
+        <a href="{% url 'index' %}" class="mt-2 btn btn-primary"> Voltar página</a>
+    </form>
+{% endblock %}

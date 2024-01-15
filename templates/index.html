@@ -17,25 +17,37 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Linha de exemplo, você pode adicionar mais linhas dinamicamente -->
+          {% for produtos in dados_produtos%}
           <tr>
-            <td>Produto A</td>
-            <td>12345</td>
-            <td>Descrição do Produto A</td>
-            <td>R$ 19.99</td>
-            <td>
-              <a href="#" class="btn btn-primary btn-sm">Editar</a>
-              
-            </td>
-            <td>
-                <a href="#" class="btn btn-danger btn-sm">Excluir</a>
-            </td>
+            <td> {{produtos.nome_produto}}</td>
+            <td> {{produtos.codigo_produto}}</td>
+            <td> {{produtos.descricao_produto}}</td>
+            <td class="preco"> {{produtos.preco_produto}}</td>
+            <td> <a href="#" class="btn btn-primary btn-sm"> Editar </a> </td>
+            <td> <a href="#" class="btn btn-danger btn-sm"> Excluir </a> </td>
           </tr>
-          <!-- Outras linhas aqui... -->
+          {% endfor %}
         </tbody>
       </table>
        <!-- Botão para adicionar produto -->
     <div class="mt-5">
-        <a href="{% url 'adicionar_produto'%}" class="btn btn-primary">Adicionar Produto</a>
+        <a href="{% url 'criar_produto' %}" class="btn btn-primary">Adicionar Produto</a>
       </div>
+
+      <!-- script js que formata o . decimal para formato brasileiro , -->
+      <script>
+        // Obtém todas as células da coluna de preço
+        var precoCells = document.querySelectorAll('.preco');
+        // Itera sobre as células e substitui o ponto por vírgula
+        precoCells.forEach(function(cell) {
+            // Obtém o conteúdo da célula (valor numérico)
+            var valorNumerico = parseFloat(cell.textContent.trim());
+    
+            // Verifica se é um número válido antes de formatar
+            if (!isNaN(valorNumerico)) {
+                // Formata o número com vírgula
+                cell.textContent = valorNumerico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            }
+        });
+    </script>
 {% endblock %}
