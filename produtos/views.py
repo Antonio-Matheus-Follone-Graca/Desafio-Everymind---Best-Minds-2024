@@ -27,7 +27,7 @@ def criar_produto(request):
         codigo_produto = request.POST.get('codigo_do_produto')
         descricao_produto = request.POST.get('descricao_do_produto')
         preco_produto = request.POST.get('preco_do_produto')
-        # por padrão o banco de dados do Djando aceita , em decimal e já converte para . por isso não fiz validação
+        # por padrão o banco de dados do Django aceita , em decimal e já converte para . por isso não fiz validação
         if form.is_valid():
            # insert do produto 
             novo_produto = Produtos(nome_produto=nome_produto, codigo_produto=codigo_produto, descricao_produto=descricao_produto, preco_produto=preco_produto)
@@ -50,4 +50,29 @@ def excluir_produto(request, id_produto):
     # Redireciona para o index
     return redirect('index')
 
+def editar_produto(request, id_produto):
+    # pegando id do produto 
+    produto = get_object_or_404(Produtos, id=id_produto)
+    # se clicou para editar
+    if request.method == 'POST':
+        # Preencha o formulário com os dados enviados no POST e os valores existentes do produto
+        form = ProdutoForm(request.POST)
+        if form.is_valid():
+            # pegando os valores do formulário e atualizando
+            produto.nome_produto = request.POST.get('nome_do_produto')
+            produto.codigo_produto = request.POST.get('codigo_do_produto')
+            produto.descricao_produto = request.POST.get('descricao_do_produto')
+            produto.preco_produto = request.POST.get('preco_do_produto')
+            # atualizando produto 
+            produto.save()
+            return redirect('index')
+    
+    # senão clicou no atualizar ou está indo para a página
+    else:
+        form = ProdutoForm(initial={'nome_do_produto': produto.nome_produto, 'codigo_do_produto': produto.codigo_produto, 'descricao_do_produto': produto.descricao_produto, 'preco_do_produto': produto.preco_produto} )
+        
+    return render(request, 'editar_produto.html', {'form': form, 'produto': produto})
+
+
+    
     

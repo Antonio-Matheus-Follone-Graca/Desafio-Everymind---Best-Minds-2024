@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Editar produto {% endblock %}
+{% block content %}
+    <h2>Editar {{ produto.nome_produto }}</h2>
+    <form action="{% url 'editar_produto' produto.id %}" method="POST">
+        {% csrf_token %}
+        {% for campos in form %}
+            {{ campos.label }}
+            {{campos}}
+
+            {% if campos.errors %}
+            <div class="form-group">
+                <small class="text-danger">{{ campos.errors|join:", " }}</small>
+            </div>
+            
+            {% endif %}
+            
+        {% endfor %}
+        <button href="#" class="mt-2 btn btn-primary"> Atualizar {{campos.nome_produto_label}} </button>
+       
+        <a href="{% url 'index' %}" class="mt-2 btn btn-primary"> Voltar página</a>
+    </form>
+{% endblock %}

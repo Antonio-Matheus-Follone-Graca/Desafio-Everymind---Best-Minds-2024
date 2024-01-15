@@ -23,7 +23,7 @@
             <td> {{produtos.codigo_produto}}</td>
             <td> {{produtos.descricao_produto}}</td>
             <td class="preco"> {{produtos.preco_produto}}</td>
-            <td> <a href="#" class="btn btn-primary btn-sm"> Editar </a> </td>
+            <td> <a href="{% url 'editar_produto' produtos.id %}" class="btn btn-primary btn-sm"> Editar </a> </td>
             <td>
               <button type="button" class="btn btn-danger btn-sm btnExcluir" data-url="{% url 'excluir_produto' produtos.id %}">
                 Excluir
