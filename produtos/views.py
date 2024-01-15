@@ -74,5 +74,14 @@ def editar_produto(request, id_produto):
     return render(request, 'editar_produto.html', {'form': form, 'produto': produto})
 
 
+# Função a mais
+
+def pesquisar_produto(request):
+        termo_pesquisa = request.GET.get('pesquisar_produto', '')
+        dados_produtos = Produtos.objects.filter(nome_produto__icontains=termo_pesquisa)
+        return render(request, 'resultado_pesquisa.html', {'dados_produtos': dados_produtos, 'termo_pesquisa': termo_pesquisa})
+    
+
+
     
     

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} Editar produto {% endblock %}
+{% block title %} Editar produto - Nunes Sport {% endblock %}
 {% block content %}
     <h2>Editar {{ produto.nome_produto }}</h2>
     <form action="{% url 'editar_produto' produto.id %}" method="POST">

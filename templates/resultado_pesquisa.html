@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %} Nunes Sport {% endblock %}
+{% block title %} Nunes Sport - Resultados pesquisa {% endblock %}
 
 {% block content %}
     <h1> Nunes Sport</h1>
-    <h2> Produtos </h2>
-    
+    <h4> Resultado da pesquisa de {{termo_pesquisa}} </h4>
+    {% if dados_produtos %}
     <table class="table table-bordered">
         <thead class="thead-dark">
           <tr>
@@ -38,11 +38,14 @@
       </table>
        <!-- Botão para adicionar produto -->
     <div class="mt-5">
-        <a href="{% url 'criar_produto' %}" class="btn btn-primary">Adicionar Produto</a>
+        <a href="{% url 'index' %}" class="btn btn-primary">Voltar página </a>
       </div>
-
-      <!-- script js que formata o . decimal para formato brasileiro , -->
-      <script>
+    {% else %}
+        Nenhum resultado encontrado
+        <a href="{% url 'index' %}" class="">Voltar página </a>
+    {% endif %}
+     <!-- script js que formata o . decimal para formato brasileiro , -->
+     <script>
         // Obtém todas as células da coluna de preço
         var precoCells = document.querySelectorAll('.preco');
         // Itera sobre as células e substitui o ponto por vírgula
@@ -71,4 +74,5 @@
             });
         });
     </script>
+
 {% endblock %}
