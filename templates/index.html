@@ -1,11 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nunes Sports </title>
-</head>
-<body>
-    <h1>Nunes Sports </h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Nunes Sport {% endblock %}
+
+{% block content %}
+    <h1> Nunes Sport</h1>
+    <h2> Produtos </h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nome do Produto</th>
+            <th scope="col">Código do Produto</th>
+            <th scope="col">Descrição do Produto</th>
+            <th scope="col">Preço do Produto</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linha de exemplo, você pode adicionar mais linhas dinamicamente -->
+          <tr>
+            <td>Produto A</td>
+            <td>12345</td>
+            <td>Descrição do Produto A</td>
+            <td>R$ 19.99</td>
+            <td>
+              <a href="#" class="btn btn-primary btn-sm">Editar</a>
+              
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+          </tr>
+          <!-- Outras linhas aqui... -->
+        </tbody>
+      </table>
+       <!-- Botão para adicionar produto -->
+    <div class="mt-5">
+        <a href="{% url 'adicionar_produto'%}" class="btn btn-primary">Adicionar Produto</a>
+      </div>
+{% endblock %}
