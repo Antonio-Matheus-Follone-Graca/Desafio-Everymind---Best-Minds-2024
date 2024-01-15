@@ -26,3 +26,13 @@ Teste do desafio Desafio Everymind - Best Minds 2024. Feito no framework Django.
 >IMPORTANTE: O projeto deverá estar em um repositório do git para conferência. Compartilhe no link disponível na página da WallJobs, o seu github, com as informações para acesso.
 
 >CONSIDERAÇÕES FINAIS: esperamos que consiga executar até o final, entretanto, mesmo que não consiga concluir totalmente, pedimos que entregue o que conseguir.
+
+## Instalando bibliotecas necessárias para o projeto rodar e rodando o projeto
+
+1. Baixe o projeto e abra no cmd a pasta do projeto;
+2. Crie uma venv com o comando python -m venv nome-venv;
+3. Ative a venv digitando(Windows no caso) : nome-venv\Scripts\activate;
+4. Importe as bibliotecas com pip install -r requirements.txt;
+5. Após isso ative a venv do projeto e rode python manage.py makemigrations e manage.py migrate; 
+6. Com a venv ativada, digite no cmd: python manage.py runserver;
+7. Cole o endereço do cmd no navegador.
