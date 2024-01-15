@@ -24,7 +24,11 @@
             <td> {{produtos.descricao_produto}}</td>
             <td class="preco"> {{produtos.preco_produto}}</td>
             <td> <a href="#" class="btn btn-primary btn-sm"> Editar </a> </td>
-            <td> <a href="#" class="btn btn-danger btn-sm"> Excluir </a> </td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm btnExcluir" data-url="{% url 'excluir_produto' produtos.id %}">
+                Excluir
+            </button> 
+            </td>
           </tr>
           {% endfor %}
         </tbody>
@@ -48,6 +52,20 @@
                 // Formata o número com vírgula
                 cell.textContent = valorNumerico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             }
+        });
+        // função de confirmar exclusão 
+        // loop para cada botão
+        var botoesExcluir = document.querySelectorAll('.btnExcluir');
+        botoesExcluir.forEach(function(botao) {
+            botao.addEventListener('click', function() {
+                var urlExclusao = this.getAttribute('data-url');
+
+                var confirmacao = confirm("Você tem certeza de que deseja excluir o produto?");
+
+                if (confirmacao) {
+                    window.location.href = urlExclusao;
+                }
+            });
         });
     </script>
 {% endblock %}

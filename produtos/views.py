@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .forms import ProdutoForm
 from .models import Produtos
 # Create your views here.
@@ -36,3 +36,18 @@ def criar_produto(request):
             return redirect('index')
     
     return render(request,'cadastrar_produto.html', {'form':form})
+
+def excluir_produto(request, id_produto):
+    '''
+        Deleta um produto ao clicar no deletar produto
+    '''
+    # procurando id do produto
+    produto = get_object_or_404(Produtos, id=id_produto)
+    # Verifica se o método da requisição é POST (para evitar exclusões acidentais)
+    # Exclui o produto
+    produto.delete()
+
+    # Redireciona para o index
+    return redirect('index')
+
+    
