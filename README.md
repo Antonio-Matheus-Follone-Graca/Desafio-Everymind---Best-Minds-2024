@@ -33,6 +33,6 @@ Teste do desafio Desafio Everymind - Best Minds 2024. Feito no framework Django.
 2. Crie uma venv com o comando python -m venv nome-venv;
 3. Ative a venv digitando(Windows no caso) : nome-venv\Scripts\activate;
 4. Importe as bibliotecas com pip install -r requirements.txt;
-5. Após isso ative a venv do projeto e rode python manage.py makemigrations e manage.py migrate; 
+5. Após isso ative a venv do projeto e rode python manage.py makemigrations e python manage.py migrate; 
 6. Com a venv ativada, digite no cmd: python manage.py runserver;
 7. Cole o endereço do cmd no navegador.
